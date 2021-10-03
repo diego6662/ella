@@ -59,10 +59,10 @@ class Perceptron ():
                 self.bias = 2 * np.random.rand(self.units) - 1
 
     def set_input_shape (self, input_shape):
-        self.input_shape = input_shape[0]
+        self.input_shape = input_shape[0]    
 
     def set_input_shape_train (self, input_shape):
-        self.input_shape = input_shape[1]
+        self.input_shape = input_shape[1] 
     
     def compute(self,X):
         value = np.dot(self.weights, X) + self.bias
