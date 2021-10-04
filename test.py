@@ -116,7 +116,7 @@ y_hat8 = model_8.predict(X)
 print(f"y_hat\n{y_hat8}")
 print("punto 3")
 model_9 = Single_sequential([
-    Perceptron(2,sigmoid(), learning_rate = 0.8),
+    Perceptron(1,sigmoid(), learning_rate = 0.05),
     Perceptron(1,step(), learning_rate = 0.05),
     ])
 x = np.array([[1,1,1],[1,1,0],[1,0,1],[1,0,0],[0,1,1],[0,1,0],[0,0,1],[0,0,0]])
@@ -137,10 +137,10 @@ y = np.array([
     ])
 
 model_10 = Single_sequential([
-    Adeline(1,linear(), learning_rate = 0.0005)
+    Adeline(1,linear(), learning_rate = 0.00005)
     ])
 
-history = model_10.train(x, y, 100)
+history = model_10.train(x, y, 50000)
 
 y_hat = model_10.predict(x)
 
@@ -158,7 +158,7 @@ model_11 = Single_sequential([
     Adeline(1,linear(), learning_rate = 0.001)
     ])
 
-history = model_11.train(x, y, 100)
+history = model_11.train(x, y, 50000)
 
 y_hat = model_11.predict(x)
 

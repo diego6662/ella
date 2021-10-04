@@ -72,19 +72,14 @@ class Perceptron ():
         self.weights += self.learning_rate * error * x_i
         self.bias += self.learning_rate * error
 
-    def call(self,X, y, epochs,):
-        history = []
-        for epoch in range(epochs):
-            error_it = 0.0
-            for idx, x in enumerate(X):
-                y_hat = self.compute(x)
-                error = (y[idx] - y_hat)
-                error = np.mean(error)
-                error_it += error
-                if error != 0:
-                    self.update_weights(error, x)
-            history.append(error_it)
-        return history
+    def call(self,X, y):
+        for idx, x in enumerate(X):
+            y_hat = self.compute(x)
+            error = (y[idx] - y_hat)
+            error = np.mean(error)
+            if error != 0.0:
+                self.update_weights(error, x)
+        return error 
 
 class Adeline ():
 
@@ -125,20 +120,15 @@ class Adeline ():
         self.weights += self.learning_rate * error * x_i
         self.bias += self.learning_rate * error
 
-    def call(self,X, y, epochs, ):
-        history = []
-        for epoch in range(epochs):
-            error_it = 0.0
-            for idx, x in enumerate(X):
-                y_hat = self.compute(x)
-                error = (y[idx] - y_hat)
-                error = np.mean(error)
-                error_it += (error ** 2) / 2.0
-                self.update_weights(error, x)
-
-            history.append(error_it)
+    def call(self,X, y,):
+        for idx, x in enumerate(X):
+            y_hat = self.compute(x)
+            error = (y[idx] - y_hat)
+            error = np.mean(error)
+            error_it = 0.5 *((error) ** 2)
             if error_it <= self.tao:
                 break
-        return history
+            self.update_weights(error, x)
+        return error
 
    
